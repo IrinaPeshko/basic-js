@@ -20,13 +20,18 @@ function createDreamTeam(members) {
   }
   for (let i = 0; i < members.length; i++) {
     if (typeof members[i] === "string") {
-      teamName.push(members[i][0]);
+      // if (members[i][0] !== " ") {
+      //   const UpperWord = members[i].toUpperCase();
+      //   teamName.push(UpperWord[0]);
+      // }
+      const UpperWord = members[i].toUpperCase();
+      teamName.push(UpperWord.trim()[0]);
     }
   }
-  return teamName.sort().join("").toUpperCase();
+  return teamName.sort().join("");
 }
 
-console.log(createDreamTeam(["Olivia", 1111, "Lily", "Oscar", true, null]));
+console.log(createDreamTeam([]));
 module.exports = {
   createDreamTeam,
 };
