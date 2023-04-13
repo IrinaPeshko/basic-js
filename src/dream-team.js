@@ -18,9 +18,11 @@ function createDreamTeam(members) {
   for (let i = 0; i < members.length; i++) {
     if (typeof members[i] === "string") {
       teamName.push(members[i][0]);
+    } else {
+      return false;
     }
   }
-  return teamName.sort().join("");
+  return teamName.sort().join("").toUpperCase();
 }
 
 console.log(createDreamTeam(["Olivia", 1111, "Lily", "Oscar", true, null]));
