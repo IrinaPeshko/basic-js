@@ -1,3 +1,5 @@
+const { NotImplementedError } = require("../extensions/index.js");
+
 /**
  * Extract season from given date and expose the enemy scout!
  *
@@ -9,7 +11,6 @@
  * getSeason(new Date(2020, 02, 31)) => 'spring'
  *
  */
-
 function getSeason(date) {
   if (arguments.length == 0) {
     return "Unable to determine the time of year!";
@@ -34,4 +35,7 @@ function getSeason(date) {
   }
 }
 
+module.exports = {
+  getSeason,
+};
 console.log(getSeason(new Date(1994, 8, 26, 3, 0, 11, 500)));

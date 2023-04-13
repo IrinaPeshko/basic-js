@@ -18,10 +18,19 @@ const HALF_LIFE_PERIOD = 5730;
  *
  */
 function dateSample(sampleActivity) {
-  let time = +sampleActivity;
-  let N = Math.log(MODERN_ACTIVITY / time);
-  let K = 0.693 / HALF_LIFE_PERIOD;
-  console.log(K);
+  if (typeof sampleActivity !== "string") {
+    return false;
+  }
+  const finalActivity = +sampleActivity;
+  if (finalActivity <= 0 || finalActivity > 15) {
+    return false;
+  }
+  if (!+sampleActivity) {
+    return false;
+  }
+
+  let N = Math.log(MODERN_ACTIVITY / finalActivity);
+  let K = Math.LN2 / HALF_LIFE_PERIOD;
   let result = Math.ceil(N / K);
   return result;
 }
