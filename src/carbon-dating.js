@@ -29,13 +29,11 @@ function dateSample(sampleActivity) {
     return false;
   }
 
-  let N = Math.log(MODERN_ACTIVITY / finalActivity);
-  let K = Math.LN2 / HALF_LIFE_PERIOD;
-  let result = Math.ceil(N / K);
+  const N = Math.log(MODERN_ACTIVITY / finalActivity);
+  const K = Math.LN2 / HALF_LIFE_PERIOD;
+  const result = Math.ceil(N / K);
   return result;
 }
-
-console.log(dateSample("1"));
 
 module.exports = {
   dateSample,
