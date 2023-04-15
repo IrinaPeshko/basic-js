@@ -7,15 +7,16 @@ const { NotImplementedError } = require("../extensions/index.js");
 const chainMaker = {
   arr: [],
   getLength() {
-    return this.arr.splite("~~").length;
+    return this.arr.length;
   },
   addLink(value) {
     if (arguments.length == 0) {
       this.arr.push(`( )`);
     } else {
+      const element = `( ${value} )`;
+      // .replace("{}", "{ }");
       this.arr.push(`( ${value} )`);
     }
-    // console.log(this.arr);
     return this;
   },
   removeLink(position) {
@@ -24,37 +25,24 @@ const chainMaker = {
       position <= 0 ||
       position >= this.arr.length
     ) {
+      this.arr = [];
       throw new Error("You can't remove incorrect link!");
-    } else {
-      this.arr.splice(position - 1, 1);
-      return this;
     }
+
+    this.arr.splice(position - 1, 1);
+    return this;
   },
   reverseChain() {
     this.arr.reverse();
     return this;
   },
   finishChain() {
-    return this.arr.join("~~");
+    const result = this.arr.join("~~");
+    this.arr = [];
+    return result;
   },
 };
 
 module.exports = {
   chainMaker,
 };
-
-console.log(
-  chainMaker
-    .reverseChain()
-    .reverseChain()
-    .reverseChain()
-    .addLink(NaN)
-    .reverseChain()
-    .addLink(null)
-    .addLink(1.233)
-    .addLink(true)
-    .addLink(false)
-    .removeLink(3)
-    .addLink(1.233)
-    .finishChain()
-);
