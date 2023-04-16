@@ -37,4 +37,17 @@ module.exports = {
   DepthCalculator,
 };
 
+// for (let i = 0; i < arr.length; i++) {
+//   function findDepth(arr) {
+//     if (Array.isArray(arr[i])) {
+//       count++;
+//       const newArr = arr[i];
+//       for (let j = 0; j < arr[i].length; j++) {
+//         findDepth(newArr);
+//       }
+//     }
+//   }
+//   findDepth(arr);
+// }
+// console.log(count);
 const depthCalc = new DepthCalculator();
